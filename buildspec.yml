@@ -14,21 +14,6 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      - echo Preparing to push artifact to GitHub...
-      # Configurar nombre y correo para Git
-      - git config --global user.name "chca115"
-      - git config --global user.email "cclaro@3htp.com"
-      # Clonar el repositorio de origen para poder hacer commits
-      - git clone https://$GITHUB_TOKEN@github.com/chca115/codebuild-test-aws.git artifact-repo
-      - cd artifact-repo
-      # Copiar el artefacto generado al repositorio
-      - mkdir -p artifacts
-      - cp ../target/messageUtil-1.0.jar artifacts/
-      # Realizar commit y push al repositorio
-      - git add artifacts/messageUtil-1.0.jar
-      - git commit -m "Add build artifact, messageUtil-1.0.jar"
-      - git push origin main
-
 artifacts:
   files:
     - target/messageUtil-1.0.jar
